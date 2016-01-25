@@ -34,6 +34,7 @@ Level4PageControllers.controller('Level4PageController', function($scope,$http,$
   
   for(var j=0; j< $scope.level4Data.length; j++){       
     $scope.level5Data = [];
+    $scope.POC = [];
     $scope.totalNumberOfTestCases = 0;
     $scope.automatedCount = 0;
     $scope.manualCount = 0;
@@ -41,20 +42,23 @@ Level4PageControllers.controller('Level4PageController', function($scope,$http,$
     for (var k = 0; k < jsonData.length; k++){                      
       if(jsonData[k][dataHeader[3]] == $scope.level4Data[j] && jsonData[k][dataHeader[0]] == $rootScope.selectedHeader && jsonData[k][dataHeader[1]] == $rootScope.selectedLevel2Header && jsonData[k][dataHeader[2]] == selectedLevel3Header){          
         $scope.level5Data.push(jsonData[k][dataHeader[4]]); 
-        if (dataHeader.length == 6){
+        if (dataHeader.length == 7){
           $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[3]]) + $scope.totalNumberOfTestCases;
           $scope.automatedCount = parseInt(jsonData[k][dataHeader[4]]) + $scope.automatedCount;
           $scope.manualCount = parseInt(jsonData[k][dataHeader[5]]) + $scope.manualCount;
+          $scope.POC.push(jsonData[k][dataHeader[6]]);
         }         
-        if (dataHeader.length == 7){
+        if (dataHeader.length == 8){
           $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[4]]) + $scope.totalNumberOfTestCases;
           $scope.automatedCount = parseInt(jsonData[k][dataHeader[5]]) + $scope.automatedCount;
           $scope.manualCount = parseInt(jsonData[k][dataHeader[6]]) + $scope.manualCount;
+          $scope.POC.push(jsonData[k][dataHeader[7]]);
         }
-        if (dataHeader.length == 8){
+        if (dataHeader.length == 9){
           $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[5]]) + $scope.totalNumberOfTestCases;
           $scope.automatedCount = parseInt(jsonData[k][dataHeader[6]]) + $scope.automatedCount;
           $scope.manualCount = parseInt(jsonData[k][dataHeader[7]]) + $scope.manualCount;
+          $scope.POC.push(jsonData[k][dataHeader[8]]);
         }
       }
     }
@@ -80,10 +84,10 @@ Level4PageControllers.controller('Level4PageController', function($scope,$http,$
     }
     // if(x==0 || x==1 || x==2){
       $scope.level5Data = $filter('unique')($scope.level5Data);
-
+      $scope.POC = $filter('unique')($scope.POC);
       // $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
       // $scope.automated = $filter('number')($scope.automated, 0);
-      $scope.level4PageData.push([JSON.stringify({"title":$scope.level4Data[j],"l1":$scope.level5Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases'}),selectedLevel3Header,$scope.level5Data.length, $scope.mapColor]);
+      $scope.level4PageData.push([JSON.stringify({"title":$scope.level4Data[j],"l1":$scope.level5Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases',"l4": "POC : "+ $scope.POC}),selectedLevel3Header,$scope.level5Data.length, $scope.mapColor]);
       console.log($scope.level4PageData);
     // }; 
     // if(x==($scope.bussinessCapability.length-1) && x!=0 && x!=1 && x!=2){          
@@ -181,7 +185,9 @@ $scope.onChartReady = function()
           t= $scope._createSVGLabel1({text:data.l3, x:titleText.attr("x"), y:parseFloat(titleText.attr("y"))});
           $(g).append($(t));
           t = $scope._createSVGLabel1({text:data.l2, x:titleText.attr("x"), y:parseFloat(titleText.attr("y"))+20});
-          $(g).append($(t));            
+          $(g).append($(t));  
+          t = $scope._createSVGLabel1({text:data.l4, x:titleText.attr("x"), y:parseFloat(titleText.attr("y"))+40});
+          $(g).append($(t));             
         }
         catch(e)
         {

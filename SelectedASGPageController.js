@@ -36,21 +36,25 @@ SelectedASGPageControllers.controller('SelectedASGPageController', function($sco
     $scope.automated = 0;
     for (var k = 0; k < jsonData.length; k++) {
      if (jsonData[k][dataHeader[1]] == $scope.level2Data[j]) {
+      $scope.POC = [];
       $scope.level3Data.push(jsonData[k][dataHeader[2]]);
-      if (dataHeader.length == 6){
+      if (dataHeader.length == 7){
           $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[3]]) + $scope.totalNumberOfTestCases;
           $scope.automatedCount = parseInt(jsonData[k][dataHeader[4]]) + $scope.automatedCount;
           $scope.manualCount = parseInt(jsonData[k][dataHeader[5]]) + $scope.manualCount;
+          $scope.POC.push(jsonData[k][dataHeader[6]]);
         }
-      if (dataHeader.length == 7){
+      if (dataHeader.length == 8){
         $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[4]]) + $scope.totalNumberOfTestCases;
         $scope.automatedCount = parseInt(jsonData[k][dataHeader[5]]) + $scope.automatedCount;
         $scope.manualCount = parseInt(jsonData[k][dataHeader[6]]) + $scope.manualCount;
+        $scope.POC.push(jsonData[k][dataHeader[7]]);
       }
-      if (dataHeader.length == 8){
+      if (dataHeader.length == 9){
         $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[5]]) + $scope.totalNumberOfTestCases;
         $scope.automatedCount = parseInt(jsonData[k][dataHeader[6]]) + $scope.automatedCount;
         $scope.manualCount = parseInt(jsonData[k][dataHeader[7]]) + $scope.manualCount;
+        $scope.POC.push(jsonData[k][dataHeader[8]]);
       }
       
      }
@@ -58,11 +62,13 @@ SelectedASGPageControllers.controller('SelectedASGPageController', function($sco
     $scope.level3Data = $filter('unique')($scope.level3Data);
     $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
     $scope.automated = $filter('number')($scope.automated, 0);
+    $scope.POC = $filter('unique')($scope.POC);
     $scope.level2PageData.push([JSON.stringify({
      "title": $scope.level2Data[j],
      "l1": $scope.level3Data.length + ' ' + dataHeader[2],
      "l2": $scope.automated + '% Automated',
-     "l3": $scope.totalNumberOfTestCases + ' Test Cases'
+     "l3": $scope.totalNumberOfTestCases + ' Test Cases',
+     "l4": "POC : "+ $scope.POC
     }), $rootScope.selectedHeader, $scope.level3Data.length, $scope.automated]);
    }
    console.log($scope.level2PageData);
@@ -108,7 +114,7 @@ SelectedASGPageControllers.controller('SelectedASGPageController', function($sco
    }
 
    $scope.seriesSelected = function(selectedItem) {
-    if($rootScope.dataHeader.length >= 7){
+    if($rootScope.dataHeader.length >= 8){
       var col = selectedItem.row;
       $rootScope.selectedLevel2Data = $scope.chartObject1.data[col + 1][0];
       $location.path("/level3Page");
@@ -206,6 +212,12 @@ SelectedASGPageControllers.controller('SelectedASGPageController', function($sco
        text: data.l2,
        x: titleText.attr("x"),
        y: parseFloat(titleText.attr("y")) + 20
+      });
+      $(g).append($(t));
+      t = $scope._createSVGLabel1({
+       text: data.l4,
+       x: titleText.attr("x"),
+       y: parseFloat(titleText.attr("y")) + 40
       });
       $(g).append($(t));
      } catch (e) {}

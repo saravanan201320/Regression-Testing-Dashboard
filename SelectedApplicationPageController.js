@@ -31,6 +31,7 @@ SelectedApplicationPageControllers.controller('SelectedApplicationPageController
   
   for(var j=0; j< $scope.level3Data.length; j++){       
     $scope.level4Data = [];
+    $scope.POC = [];
     $scope.totalNumberOfTestCases = 0;
     $scope.automatedCount = 0;
     $scope.manualCount = 0;
@@ -38,20 +39,23 @@ SelectedApplicationPageControllers.controller('SelectedApplicationPageController
     for (var k = 0; k < jsonData.length; k++){                   
       if(jsonData[k][dataHeader[2]] == $scope.level3Data[j] && jsonData[k][dataHeader[0]] == $rootScope.selectedHeader && jsonData[k][dataHeader[1]] == selectedLevel2Header){          
         $scope.level4Data.push(jsonData[k][dataHeader[3]]); 
-        if (dataHeader.length == 6){
+        if (dataHeader.length == 7){
           $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[3]]) + $scope.totalNumberOfTestCases;
           $scope.automatedCount = parseInt(jsonData[k][dataHeader[4]]) + $scope.automatedCount;
           $scope.manualCount = parseInt(jsonData[k][dataHeader[5]]) + $scope.manualCount;
+          $scope.POC.push(jsonData[k][dataHeader[6]]);
         }         
-        if (dataHeader.length == 7){
+        if (dataHeader.length == 8){
         $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[4]]) + $scope.totalNumberOfTestCases;
         $scope.automatedCount = parseInt(jsonData[k][dataHeader[5]]) + $scope.automatedCount;
         $scope.manualCount = parseInt(jsonData[k][dataHeader[6]]) + $scope.manualCount;
+        $scope.POC.push(jsonData[k][dataHeader[7]]);
         }
-        if (dataHeader.length == 8){
+        if (dataHeader.length == 9){
           $scope.totalNumberOfTestCases = parseInt(jsonData[k][dataHeader[5]]) + $scope.totalNumberOfTestCases;
           $scope.automatedCount = parseInt(jsonData[k][dataHeader[6]]) + $scope.automatedCount;
           $scope.manualCount = parseInt(jsonData[k][dataHeader[7]]) + $scope.manualCount;
+          $scope.POC.push(jsonData[k][dataHeader[8]]);
         }
       }
     }
@@ -76,9 +80,10 @@ SelectedApplicationPageControllers.controller('SelectedApplicationPageController
     }
     // if(x==0 || x==1 || x==2){
       $scope.level4Data = $filter('unique')($scope.level4Data);
+      $scope.POC = $filter('unique')($scope.POC);
       // $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
       // $scope.automated = $filter('number')($scope.automated, 0);
-      $scope.level3PageData.push([JSON.stringify({"title":$scope.level3Data[j],"l1":$scope.level4Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases'}),selectedLevel2Header,$scope.level4Data.length, $scope.mapColor]);
+      $scope.level3PageData.push([JSON.stringify({"title":$scope.level3Data[j],"l1":$scope.level4Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases',"l4": "POC : "+ $scope.POC}),selectedLevel2Header,$scope.level4Data.length, $scope.mapColor]);
       console.log($scope.level3PageData);
     // }; 
     // if(x==($scope.bussinessCapability.length-1) && x!=0 && x!=1 && x!=2){          
@@ -176,7 +181,9 @@ $scope.onChartReady = function()
           t= $scope._createSVGLabel1({text:data.l3, x:titleText.attr("x"), y:parseFloat(titleText.attr("y"))});
           $(g).append($(t));
           t = $scope._createSVGLabel1({text:data.l2, x:titleText.attr("x"), y:parseFloat(titleText.attr("y"))+20});
-          $(g).append($(t));            
+          $(g).append($(t));    
+          t = $scope._createSVGLabel1({text:data.l4, x:titleText.attr("x"), y:parseFloat(titleText.attr("y"))+40});
+          $(g).append($(t));        
         }
         catch(e)
         {
@@ -202,7 +209,7 @@ $scope._createSVGLabel1 = function (d)
 };
 
 $scope.seriesSelected = function(selectedItem) {
-  if($rootScope.dataHeader.length == 8){
+  if($rootScope.dataHeader.length == 9){
     var col = selectedItem.row;
     $rootScope.selectedLevel3Data = $scope.chartObject2.data[col + 1][0];
     $location.path("/level4Page");

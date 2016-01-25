@@ -164,13 +164,14 @@
     }
 
     function loadData(dataHeader, jsonData) {
-      if (dataHeader.length == 6) {
+      if (dataHeader.length == 7) {
       var level1DataHeader = dataHeader[0];
       $rootScope.level1DataHeader = level1DataHeader;
       var level2DataHeader = dataHeader[1];
       $rootScope.mainPageData = [];
       console.log(level1DataHeader);
       $scope.level1Data = [];
+      
 
       for (var i = 0; i < jsonData.length; i++) {
        $scope.level1Data.push(jsonData[i][level1DataHeader]);
@@ -180,11 +181,12 @@
       console.log($scope.level1Data.length);
       for (var j = 0; j < $scope.level1Data.length; j++) {
        $scope.level2Data = [];
+       $scope.POC = [];
        $scope.totalNumberOfTestCases = 0;
        $scope.automatedCount = 0;
        $scope.manualCount = 0;
        $scope.automated = 0;
-       console.log($scope.level1Data[j]);
+       console.log($scope.level1Data[j]);       
        for (var k = 0; k < jsonData.length; k++) {
         if (jsonData[k][level1DataHeader] == $scope.level1Data[j]) {
          $scope.level2Data.push(jsonData[k][level2DataHeader]);
@@ -192,23 +194,27 @@
          // console.log($scope.totalNumberOfTestCases+"----"+jsonData[k][dataHeader[4]]);
          $scope.automatedCount = parseInt(jsonData[k][dataHeader[4]]) + $scope.automatedCount;
          $scope.manualCount = parseInt(jsonData[k][dataHeader[5]]) + $scope.manualCount;
+         $scope.POC.push(jsonData[k][dataHeader[6]]);
         }
        }
        $scope.level2Data = $filter('unique')($scope.level2Data);
        $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
        $scope.automated = $filter('number')($scope.automated, 0);
+       $scope.POC = $filter('unique')($scope.POC);
        // console.log("Length: "+$scope.level2Data.length +" Total: "+$scope.totalNumberOfTestCases+" Automated: "+$scope.automatedCount+" Manual: "+$scope.manualCount+" Automated in % : "+$scope.automated);                 
        $rootScope.mainPageData.push([JSON.stringify({
         "title": $scope.level1Data[j],
         "l1": $scope.level2Data.length + ' Applications',
         "l2": $scope.automated + '% Automated',
-        "l3": $scope.totalNumberOfTestCases + ' Test Cases'
+        "l3": $scope.totalNumberOfTestCases + ' Test Cases',
+        "l4": "POC : "+ $scope.POC         
        }), level1DataHeader, $scope.level2Data.length, $scope.automated]);
       }
       loadMap();
       // console.log($scope.mainPageData);
      }
-     if (dataHeader.length == 7) {
+     if (dataHeader.length == 8) {
+      
       var level1DataHeader = dataHeader[0];
       $rootScope.level1DataHeader = level1DataHeader;
       var level2DataHeader = dataHeader[1];
@@ -223,6 +229,7 @@
       console.log($scope.level1Data);
       console.log($scope.level1Data.length);
       for (var j = 0; j < $scope.level1Data.length; j++) {
+       $scope.POC = [];
        $scope.level2Data = [];
        $scope.totalNumberOfTestCases = 0;
        $scope.automatedCount = 0;
@@ -236,29 +243,33 @@
          // console.log($scope.totalNumberOfTestCases+"----"+jsonData[k][dataHeader[4]]);
          $scope.automatedCount = parseInt(jsonData[k][dataHeader[5]]) + $scope.automatedCount;
          $scope.manualCount = parseInt(jsonData[k][dataHeader[6]]) + $scope.manualCount;
+         $scope.POC.push(jsonData[k][dataHeader[7]]);
         }
        }
        $scope.level2Data = $filter('unique')($scope.level2Data);
        $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
        $scope.automated = $filter('number')($scope.automated, 0);
+       $scope.POC = $filter('unique')($scope.POC);
        // console.log("Length: "+$scope.level2Data.length +" Total: "+$scope.totalNumberOfTestCases+" Automated: "+$scope.automatedCount+" Manual: "+$scope.manualCount+" Automated in % : "+$scope.automated);                 
        $rootScope.mainPageData.push([JSON.stringify({
         "title": $scope.level1Data[j],
         "l1": $scope.level2Data.length + ' Applications',
         "l2": $scope.automated + '% Automated',
-        "l3": $scope.totalNumberOfTestCases + ' Test Cases'
+        "l3": $scope.totalNumberOfTestCases + ' Test Cases',
+        "l4": "POC : "+ $scope.POC
        }), level1DataHeader, $scope.level2Data.length, $scope.automated]);
       }
       loadMap();
       // console.log($scope.mainPageData);
      }
-     if (dataHeader.length == 8) {
+     if (dataHeader.length == 9) {
       var level1DataHeader = dataHeader[0];
       $rootScope.level1DataHeader = level1DataHeader;
       var level2DataHeader = dataHeader[1];
       $rootScope.mainPageData = [];
       console.log(level1DataHeader);
       $scope.level1Data = [];
+      
 
       for (var i = 0; i < jsonData.length; i++) {
        $scope.level1Data.push(jsonData[i][level1DataHeader]);
@@ -267,6 +278,7 @@
       console.log($scope.level1Data);
       console.log($scope.level1Data.length);
       for (var j = 0; j < $scope.level1Data.length; j++) {
+       $scope.POC = [];
        $scope.level2Data = [];
        $scope.totalNumberOfTestCases = 0;
        $scope.automatedCount = 0;
@@ -280,17 +292,20 @@
          // console.log($scope.totalNumberOfTestCases+"----"+jsonData[k][dataHeader[4]]);
          $scope.automatedCount = parseInt(jsonData[k][dataHeader[6]]) + $scope.automatedCount;
          $scope.manualCount = parseInt(jsonData[k][dataHeader[7]]) + $scope.manualCount;
+         $scope.POC.push(jsonData[k][dataHeader[8]]);
         }
        }
        $scope.level2Data = $filter('unique')($scope.level2Data);
        $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
        $scope.automated = $filter('number')($scope.automated, 0);
+       $scope.POC = $filter('unique')($scope.POC);
        // console.log("Length: "+$scope.level2Data.length +" Total: "+$scope.totalNumberOfTestCases+" Automated: "+$scope.automatedCount+" Manual: "+$scope.manualCount+" Automated in % : "+$scope.automated);                 
        $rootScope.mainPageData.push([JSON.stringify({
         "title": $scope.level1Data[j],
         "l1": $scope.level2Data.length + ' Applications',
         "l2": $scope.automated + '% Automated',
-        "l3": $scope.totalNumberOfTestCases + ' Test Cases'
+        "l3": $scope.totalNumberOfTestCases + ' Test Cases',
+        "l4": "POC : "+ $scope.POC
        }), level1DataHeader, $scope.level2Data.length, $scope.automated]);
       }
       loadMap();
@@ -313,14 +328,14 @@
         field: "level1",
         displayName: $scope.level1
        }, {
-        field: "totalNumberOfTestCases",
-        displayName: "Total Number Of Test Cases"
-       }, {
         field: "manual",
         displayName: "Manual"
        }, {
         field: "automated",
         displayName: "Automated"
+       },{
+        field: "POC",
+        displayName: "POC"
        }],
        data: []
       }]);
@@ -345,6 +360,9 @@
        }, {
         field: "automated",
         displayName: "Automated"
+       },{
+        field: "POC",
+        displayName: "POC"
        }],
        data: []
       }]);
@@ -373,6 +391,9 @@
        }, {
         field: "automated",
         displayName: "Automated"
+       },{
+        field: "POC",
+        displayName: "POC"
        }],
        data: []
       }]);
@@ -405,6 +426,9 @@
        }, {
         field: "automated",
         displayName: "Automated"
+       },{
+        field: "POC",
+        displayName: "POC"
        }],
        data: []
       }]);
@@ -441,6 +465,9 @@
        }, {
         field: "automated",
         displayName: "Automated"
+       },{
+        field: "POC",
+        displayName: "POC"
        }],
        data: []
       }]);
@@ -469,8 +496,10 @@
         }, {
          field: "automated",
          displayName: "Automated"
-        }
-       ],
+        },{
+        field: "POC",
+        displayName: "POC"
+       }],
        data: []
       }]);
      }
@@ -517,7 +546,7 @@
     };
 
     $scope.seriesSelected = function(selectedItem) {
-      if($rootScope.dataHeader.length >= 6){
+      if($rootScope.dataHeader.length >= 7){
         var col = selectedItem.row;
         $rootScope.selectedLevel1Data = $scope.chartObject.data[col + 1][0];
         $location.path("/level2Page"); 
@@ -622,6 +651,12 @@
           text: data.l2,
           x: titleText.attr("x"),
           y: parseFloat(titleText.attr("y")) + 20
+         });
+         $(g).append($(t));
+         t = $scope._createSVGLabel({
+          text: data.l4,
+          x: titleText.attr("x"),
+          y: parseFloat(titleText.attr("y")) + 40
          });
          $(g).append($(t));
         } catch (e) {}
