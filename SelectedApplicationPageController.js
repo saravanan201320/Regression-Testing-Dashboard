@@ -55,30 +55,30 @@ SelectedApplicationPageControllers.controller('SelectedApplicationPageController
         }
       }
     }
-    // if($scope.BCNumberOfTestCases == 0 || $scope.BCNumberOfTestCases == 'Nan'){
-    //   $scope.BCNumberOfTestCases = 0;
-    // }
-    // if($scope.BCFullyAutomated == 0 || $scope.BCFullyAutomated == 'Nan'){
-    //   $scope.BCFullyAutomated = 0;
-    // }
-    // if($scope.BCPartiallyAutomated == 0 || $scope.BCPartiallyAutomated == 'Nan'){
-    //   $scope.BCPartiallyAutomated = 0;
-    // }
-    // if($scope.BCNumberOfTestCases == 0){
-    //   $scope.BCAutomated = 'Automated : NA';
-    //   $scope.mapColor = 0;
-    // }
-    // else
-    // {
-    //   $scope.BCAutomated = ($scope.BCFullyAutomated/$scope.BCNumberOfTestCases)*100;
-    //   $scope.BCAutomated = $filter('number')($scope.BCAutomated, 0) + '% Automated';
-    //   $scope.mapColor = $scope.BCFullyAutomated/$scope.BCNumberOfTestCases;
-    // }
+    if($scope.totalNumberOfTestCases == 0 || $scope.totalNumberOfTestCases == 'Nan'){
+      $scope.totalNumberOfTestCases = 0;
+    }
+    if($scope.automatedCount == 0 || $scope.automatedCount == 'Nan'){
+      $scope.automatedCount = 0;
+    }
+    if($scope.manualCount == 0 || $scope.manualCount == 'Nan'){
+      $scope.manualCount = 0;
+    }
+    if($scope.totalNumberOfTestCases == 0){
+      $scope.automated = 'Automated : NA';
+      $scope.mapColor = 0;
+    }
+    else
+    {
+      $scope.automated = ($scope.automatedCount/$scope.totalNumberOfTestCases)*100;
+      $scope.automated = $filter('number')($scope.automated, 0);
+      $scope.mapColor = $scope.automated;
+    }
     // if(x==0 || x==1 || x==2){
       $scope.level4Data = $filter('unique')($scope.level4Data);
-      $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
-      $scope.automated = $filter('number')($scope.automated, 0);
-      $scope.level3PageData.push([JSON.stringify({"title":$scope.level3Data[j],"l1":$scope.level4Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases'}),selectedLevel2Header,$scope.level4Data.length, $scope.automated]);
+      // $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
+      // $scope.automated = $filter('number')($scope.automated, 0);
+      $scope.level3PageData.push([JSON.stringify({"title":$scope.level3Data[j],"l1":$scope.level4Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases'}),selectedLevel2Header,$scope.level4Data.length, $scope.mapColor]);
       console.log($scope.level3PageData);
     // }; 
     // if(x==($scope.bussinessCapability.length-1) && x!=0 && x!=1 && x!=2){          

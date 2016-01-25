@@ -1,5 +1,6 @@
 var Level4PageControllers = angular.module('Level4PageControllers',['googlechart','angular.filter']);
 Level4PageControllers.controller('Level4PageController', function($scope,$http,$filter,$rootScope,$location){
+  
 	if(typeof($rootScope.groups) == "string"){
     var jsonData = JSON.parse($rootScope.groups);
   }
@@ -57,31 +58,32 @@ Level4PageControllers.controller('Level4PageController', function($scope,$http,$
         }
       }
     }
-    // if($scope.BCNumberOfTestCases == 0 || $scope.BCNumberOfTestCases == 'Nan'){
-    //   $scope.BCNumberOfTestCases = 0;
-    // }
-    // if($scope.BCFullyAutomated == 0 || $scope.BCFullyAutomated == 'Nan'){
-    //   $scope.BCFullyAutomated = 0;
-    // }
-    // if($scope.BCPartiallyAutomated == 0 || $scope.BCPartiallyAutomated == 'Nan'){
-    //   $scope.BCPartiallyAutomated = 0;
-    // }
-    // if($scope.BCNumberOfTestCases == 0){
-    //   $scope.BCAutomated = 'Automated : NA';
-    //   $scope.mapColor = 0;
-    // }
-    // else
-    // {
-    //   $scope.BCAutomated = ($scope.BCFullyAutomated/$scope.BCNumberOfTestCases)*100;
-    //   $scope.BCAutomated = $filter('number')($scope.BCAutomated, 0) + '% Automated';
-    //   $scope.mapColor = $scope.BCFullyAutomated/$scope.BCNumberOfTestCases;
-    // }
+    if($scope.totalNumberOfTestCases == 0 || $scope.totalNumberOfTestCases == 'Nan'){
+      $scope.totalNumberOfTestCases = 0;
+    }
+    if($scope.automatedCount == 0 || $scope.automatedCount == 'Nan'){
+      $scope.automatedCount = 0;
+    }
+    if($scope.manualCount == 0 || $scope.manualCount == 'Nan'){
+      $scope.manualCount = 0;
+    }
+
+    if($scope.totalNumberOfTestCases == 0){
+      $scope.automatedCount = 'Automated : NA';
+      $scope.mapColor = 0;
+    }
+    else
+    {
+      $scope.automated = ($scope.automatedCount/$scope.totalNumberOfTestCases)*100;
+      $scope.automated = $filter('number')($scope.automated, 0);
+      $scope.mapColor = $scope.automated;
+    }
     // if(x==0 || x==1 || x==2){
       $scope.level5Data = $filter('unique')($scope.level5Data);
 
-      $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
-      $scope.automated = $filter('number')($scope.automated, 0);
-      $scope.level4PageData.push([JSON.stringify({"title":$scope.level4Data[j],"l1":$scope.level5Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases'}),selectedLevel3Header,$scope.level5Data.length, $scope.automated]);
+      // $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
+      // $scope.automated = $filter('number')($scope.automated, 0);
+      $scope.level4PageData.push([JSON.stringify({"title":$scope.level4Data[j],"l1":$scope.level5Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases'}),selectedLevel3Header,$scope.level5Data.length, $scope.mapColor]);
       console.log($scope.level4PageData);
     // }; 
     // if(x==($scope.bussinessCapability.length-1) && x!=0 && x!=1 && x!=2){          
