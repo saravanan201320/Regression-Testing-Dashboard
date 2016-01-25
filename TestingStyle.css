@@ -1,0 +1,484 @@
+/*@font-face {
+    font-family: 'AccentureFont';
+    src: local('agfarotissansserif.ttf'), url('agfarotissansserif.eot') format('embedded-opentype'), url('agfarotissansserif.ttf') format('truetype'), url('agfarotissansserif.svg') format('svg');
+    font-style: normal;
+    font-weight: normal; 
+}*/
+/*@font-face{
+    @font-face{font-family:"AccentureFont";
+    src:url(acncustomfont.eot);
+    src:local(":P"),url(acncustomfont.eot?#iefix) format("embedded-opentype"),
+    url(acncustomfont.woff) format("woff"),
+    url(acncustomfont.svg#acncustomfont) format("svg"),
+    url(acncustomfont.ttf) format("truetype"),
+    url(acncustomfont.otf) format("opentype");
+    font-weight:normal;
+    font-style:normal;
+  }
+*/
+/*body{
+  font-family: AccentureFont;
+}
+div {
+    font-family: AccentureFont;
+}
+
+p {
+  font-family: AccentureFont;
+}
+
+table{
+ font-family: AccentureFont; 
+}*/
+
+@font-face {
+    font-family: 'AccentureFont';
+    src: url('rotsanl.woff') format('woff'), url('rotsanl.ttf') format('truetype'), url('rotsanl.svg#AccentureRotis') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.flex-100 {
+    max-width: 0% !important;
+}
+.form-modified {
+    width: 15% !important;
+    padding: 5px !important;
+    margin-left: 260px !important;
+    margin-top: -33px !important;
+    height: 34px !important;
+}
+.form-control {
+    width: 110px;
+    height: 25px;
+}
+hr {
+    border-top: 1px solid grey !important;
+}
+md-toolbar {
+    min-height: 35px !important;
+}
+.progressLineardemoBasicUsage body {
+    padding: 20px;
+}
+.progressLineardemoBasicUsage h4 {
+    margin: 10px 0;
+}
+.progressLineardemoBasicUsage md-progress-linear {
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+.progressLineardemoBasicUsage #loaders > md-switch {
+    margin: 0;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+.progressLineardemoBasicUsage #loaders > h5 {
+    margin-top: 0;
+}
+.progressLineardemoBasicUsage #loaders > p {
+    margin-right: 20px;
+    margin-bottom: 24px;
+}
+.progressLineardemoBasicUsage p.small {
+    font-size: 0.8em;
+    margin-top: -18px;
+}
+.progressLineardemoBasicUsage hr {
+    width: 100%;
+    margin-top: 20px;
+    border-color: rgba(221, 221, 177, 0.1);
+}
+.progressLineardemoBasicUsage p.small > code {
+    font-size: 0.8em;
+}
+.progressLineardemoBasicUsage .visible {
+    opacity: 0;
+    border: 2px solid white !important;
+}
+.progressLineardemoBasicUsage .container {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 2px solid #aad1f9;
+    transition: opacity 0.1s linear;
+    border-top: 0px;
+}
+.progressLineardemoBasicUsage .bottom-block {
+    display: block;
+    position: relative;
+    background-color: rgba(255, 235, 169, 0.25);
+    height: 85px;
+    width: 100%;
+}
+.progressLineardemoBasicUsage .bottom-block > span {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 25px;
+    font-size: 0.9em;
+}
+.md-container {
+    height: 20px !important;
+}
+.md-toolbar-tools {
+    background-color: rgb(0, 130, 200);
+}
+.md-container .md-bar {
+    height: 20px !important;
+    background-color: #337ab7 !important;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    text-align: center;
+    border-radius: 5px !important;
+    transition: width .6s ease;
+    box-sizing: border-box;
+    animation: progress-bar-stripes 2s linear infinite;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    -webkit-background-size: 40px 40px;
+    background-size: 40px 40px;
+}
+md-progress-linear .md-container {
+    background-color: transparent;
+}
+.button {
+    -moz-appearance: button;
+    /* Firefox */
+    
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    
+    padding: 10px;
+    margin: 10px;
+    width: 70px;
+}
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 50%;
+    height: 100px;
+    text-align: center;
+    padding-top: 40px;
+    margin: 0px 0px 0px 140px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
+/* Space out content a bit */
+
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/* Everything but the jumbotron gets side spacing for mobile first views */
+
+.header,
+.marketing,
+.footer {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+/* Custom page header */
+
+.header {
+    padding-bottom: 0px;
+    border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+/* Custom page footer */
+
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+/* Customize container */
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+/* Main marketing message and sign up button */
+
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+    padding: 14px 24px;
+    font-size: 21px;
+}
+/* Supporting marketing content */
+
+.marketing {
+    margin: 40px 0;
+}
+.marketing p + h4 {
+    margin-top: 28px;
+}
+/* Responsive: Portrait tablets and up */
+
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    
+    .header,
+    .marketing,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* Space out the masthead */
+    
+    .header {
+        margin-bottom: 0px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+.container .jumbotron {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: white;
+}
+body,
+div,
+p,
+table,
+b,
+a,
+form {
+    font-family: "AccentureFont";
+}
+.col-md-1 {
+    width: 2%;
+}
+.wrapper {
+    padding-left: 155px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    /* optional */
+    
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+}
+.logo-style {
+    width: 75%;
+    /*position: relative;
+  top: -10px;*/
+}
+.brand-style {
+    /*right: 368px;
+position: absolute;
+top: -10px;*/
+}
+.navbar {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+    background-color: white;
+}
+.navbar-default {
+    border-color: lightgrey;
+}
+.body-style {
+    position: absolute;
+    left: 240px;
+}
+.horizontal-line {
+    /* margin-top: -440px;
+margin-bottom: 7px;*/
+    
+    border-width: 1px 0px 0px;
+    border-style: solid none none;
+    border-color: lightgrey;
+}
+#group1Div {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+}
+#group2Div {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+}
+#group3Div {
+    -webkit-box-ordinal-group: 3;
+    -moz-box-ordinal-group: 3;
+    -ms-flex-order: 3;
+    -webkit-order: 3;
+    order: 3;
+}
+#group4Div {
+    -webkit-box-ordinal-group: 4;
+    -moz-box-ordinal-group: 4;
+    -ms-flex-order: 4;
+    -webkit-order: 4;
+    order: 4;
+}
+.group1 {
+    border-radius: 25px;
+    background: #8AC007;
+    /* background: #BAEB9D;*/
+    
+    width: 375px;
+    height: 263px;
+}
+.group-icon {
+    padding: 7px;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+.group2 {
+    border-radius: 25px;
+    background: #ff6666;
+    width: 375px;
+    height: 263px;
+}
+.group3 {
+    border-radius: 25px;
+    background: skyblue;
+    width: 375px;
+    height: 263px;
+    position: relative;
+    bottom: -10px;
+}
+.group4 {
+    border-radius: 25px;
+    background: #ffb3da;
+    width: 375px;
+    height: 263px;
+    position: relative;
+    bottom: -10px;
+    /*background-image: url("../images/dental-logo.jpg");*/
+    /*background-size: 50%;*/
+}
+.group-btn1 {
+    margin-top: 310px;
+    width: 20%;
+    margin-left: 640px;
+    background-color: transparent;
+    border-color: white;
+}
+.group-btn2 {
+    margin-top: 190px;
+    width: 20%;
+    margin-left: 640px;
+    background-color: transparent;
+    border-color: white;
+}
+.group-btn3 {
+    margin-top: 190px;
+    width: 20%;
+    margin-left: 640px;
+    background-color: transparent;
+    border-color: white;
+}
+.group-btn4 {
+    margin-top: 190px;
+    width: 12%;
+    margin-left: 930px;
+    background-color: transparent;
+    border-color: white;
+}
+.button {
+    height: 100px;
+    width: 160px;
+    border-top: 30px solid #C66;
+    border-bottom: 30px solid #6C6;
+    border-left: 30px solid #66C;
+    border-right: 30px solid #CC6;
+}
+.categorydd-style {
+    position: absolute;
+    top: -35px;
+    left: 170px;
+}
+.categorybtn-style {
+    background-color: transparent;
+    border-color: black;
+    color: black;
+}
+.dropdown1 {
+    left: 116px;
+    top: 0px;
+}
+.dropdown2 {
+    left: 530px;
+    top: -30px;
+}
+.DD-Style {
+    top: 25px;
+    position: relative;
+    left: 55px;
+}
+.table-style {
+    position: relative;
+    top: 30px;
+    width: 62%;
+    left: 50px;
+    font-size: 9;
+}
+/*@media (min-width: 768px)*/
+
+.modal-sm {
+    width: 447px !important;
+}
+th {
+    text-align: center;
+}
+.upload-window {
+    background-color: #646C7F !important;
+    opacity: 0.6;
+    color: black;
+}
+.dialogdemoBasicUsage #popupContainer {
+    position: relative;
+}
+.dialogdemoBasicUsage .footer {
+    width: 100%;
+    text-align: center;
+    margin-left: 20px;
+}
+.dialogdemoBasicUsage .footer,
+.dialogdemoBasicUsage .footer > code {
+    font-size: 0.8em;
+    margin-top: 50px;
+}
