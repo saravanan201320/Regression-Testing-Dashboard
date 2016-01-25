@@ -79,15 +79,15 @@ Level4PageControllers.controller('Level4PageController', function($scope,$http,$
     else
     {
       $scope.automated = ($scope.automatedCount/$scope.totalNumberOfTestCases)*100;
-      $scope.automated = $filter('number')($scope.automated, 0);
-      $scope.mapColor = $scope.automated;
+      $scope.automated = $filter('number')($scope.automated, 0)+'% Automated';
+      $scope.mapColor = ($scope.automatedCount/$scope.totalNumberOfTestCases)*100;
     }
     // if(x==0 || x==1 || x==2){
       $scope.level5Data = $filter('unique')($scope.level5Data);
       $scope.POC = $filter('unique')($scope.POC);
       // $scope.automated = ($scope.automatedCount / $scope.totalNumberOfTestCases) * 100;
       // $scope.automated = $filter('number')($scope.automated, 0);
-      $scope.level4PageData.push([JSON.stringify({"title":$scope.level4Data[j],"l1":$scope.level5Data.length+' Functionality',"l2":$scope.automated+'% Automated', "l3":$scope.totalNumberOfTestCases+' Test Cases',"l4": "POC : "+ $scope.POC}),selectedLevel3Header,$scope.level5Data.length, $scope.mapColor]);
+      $scope.level4PageData.push([JSON.stringify({"title":$scope.level4Data[j],"l1":$scope.level5Data.length+' Functionality',"l2":$scope.automated, "l3":$scope.totalNumberOfTestCases+' Test Cases',"l4": "POC : "+ $scope.POC}),selectedLevel3Header,$scope.level5Data.length, $scope.mapColor]);
       console.log($scope.level4PageData);
     // }; 
     // if(x==($scope.bussinessCapability.length-1) && x!=0 && x!=1 && x!=2){          
