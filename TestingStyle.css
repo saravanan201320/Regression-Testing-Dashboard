@@ -33,7 +33,9 @@ table{
 
 @font-face {
     font-family: 'AccentureFont';
-    src: url('rotsanl.woff') format('woff'), url('rotsanl.ttf') format('truetype'), url('rotsanl.svg#AccentureRotis') format('svg');
+    src: url('https://rawgit.com/saravanan201320/Regression-Testing-Dashboard/master/rotsanl.eot') format('woff'), 
+    url('https://rawgit.com/saravanan201320/Regression-Testing-Dashboard/master/rotsanl.ttf') format('truetype'), 
+    url('https://rawgit.com/saravanan201320/Regression-Testing-Dashboard/master/rotsanl.svg#AccentureRotis') format('svg');
     font-weight: normal;
     font-style: normal;
 }
