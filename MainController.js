@@ -92,6 +92,8 @@
      }
     });
     $scope.log = '';
+    $scope.uploadBtn = true;
+    $scope.fileStat = true;
     $scope.upload = function(files) {
      if (files && files.length) {
       $scope.fileLabel = false;
@@ -107,12 +109,18 @@
           file: file
          }
         }).progress(function(evt) {
+          $scope.fileStat = false;
          var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
          $scope.log = 'progress: ' + progressPercentage + '% ' +
           evt.config.data.file.name + '\n' + $scope.log;
          $scope.progress = progressPercentage;
          $scope.progressLabel = false;
-        }).success(function(data, status, headers, config) {
+
+
+        }).success(function(data, status, headers, config) {                  
+                 
+            $scope.fileStat = true;
+          
          fileChanged($scope.uploadedFile);
          $timeout(function() {
           $scope.log = 'file: ' + config.data.file.name + ', Response: ' + JSON.stringify(data) + '\n' + $scope.log;
@@ -123,6 +131,7 @@
      }
     };
     function fileChanged(files) {
+
      $scope.excelFile = files[0];
      console.log("--->" + $scope.excelFile);
      XLSXReader($scope.excelFile, true, true, function(data) {
@@ -131,6 +140,7 @@
       $localStorage.groups = $scope.json_string;
       $rootScope.groups = $localStorage.groups;
       console.log($rootScope.groups)
+      
        // console.log($rootScope.groups);          
       $rootScope.$apply();
      });
