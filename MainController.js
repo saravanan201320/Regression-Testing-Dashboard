@@ -206,8 +206,8 @@
         "title": $scope.level1Data[j],
         "l1": $scope.level2Data.length + ' Applications',
         "l2": $scope.automated + '% Automated',
-        "l3": $scope.totalNumberOfTestCases + ' Test Cases',
-        "l4": "POC : "+ $scope.POC         
+        "l3": $scope.totalNumberOfTestCases + ' Test Cases'
+        // "l4": "POC : "+ $scope.POC         
        }), level1DataHeader, $scope.level2Data.length, $scope.automated]);
       }
       loadMap();
@@ -255,8 +255,8 @@
         "title": $scope.level1Data[j],
         "l1": $scope.level2Data.length + ' Applications',
         "l2": $scope.automated + '% Automated',
-        "l3": $scope.totalNumberOfTestCases + ' Test Cases',
-        "l4": "POC : "+ $scope.POC
+        "l3": $scope.totalNumberOfTestCases + ' Test Cases'
+        // "l4": "POC : "+ $scope.POC
        }), level1DataHeader, $scope.level2Data.length, $scope.automated]);
       }
       loadMap();
@@ -304,8 +304,8 @@
         "title": $scope.level1Data[j],
         "l1": $scope.level2Data.length + ' Applications',
         "l2": $scope.automated + '% Automated',
-        "l3": $scope.totalNumberOfTestCases + ' Test Cases',
-        "l4": "POC : "+ $scope.POC
+        "l3": $scope.totalNumberOfTestCases + ' Test Cases'
+        // "l4": "POC : "+ $scope.POC
        }), level1DataHeader, $scope.level2Data.length, $scope.automated]);
       }
       loadMap();
