@@ -653,12 +653,12 @@
           y: parseFloat(titleText.attr("y")) + 20
          });
          $(g).append($(t));
-         t = $scope._createSVGLabel({
-          text: data.l4,
-          x: titleText.attr("x"),
-          y: parseFloat(titleText.attr("y")) + 40
-         });
-         $(g).append($(t));
+         // t = $scope._createSVGLabel({
+         //  text: data.l4,
+         //  x: titleText.attr("x"),
+         //  y: parseFloat(titleText.attr("y")) + 40
+         // });
+         // $(g).append($(t));
         } catch (e) {}
        })
       }
