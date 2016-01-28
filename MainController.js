@@ -118,7 +118,7 @@
 
 
         }).success(function(data, status, headers, config) {                  
-                 
+            $scope.uploadBtn = false;
             $scope.fileStat = true;
           
          fileChanged($scope.uploadedFile);

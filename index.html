@@ -117,7 +117,7 @@ $(document).ready(function(){
 <script type="text/ng-template" id="dialog1.tmpl.html">
     <md-dialog aria-label="Data Sheet" style="width: 85%;height: 100%;" ng-cloak>
 
-        <form>
+        <form ng-controller="mainPageController">
             <md-toolbar>
                 <div class="md-toolbar-tools">
                     <h2>Data Sheet</h2>
@@ -129,7 +129,7 @@ $(document).ready(function(){
             </md-toolbar>
 
             <md-dialog-content>
-                <div class="md-dialog-content" ng-controller="mainPageController">
+                <div class="md-dialog-content" >
                     <div class="row" style="margin-top: -10px;">
                         <label>Select your project hierarchical levels</label>
                         <select ng-model="selectedItem" class="form-control form-modified" ng-change=excelDD()>
@@ -249,7 +249,7 @@ $(document).ready(function(){
 
             <md-dialog-actions layout="row">
                 <span flex></span>
-                <md-button   ng-click="Upload('upload')" style="margin-right:10px;background-color: #337ab7;border-radius: 4px;color:white">
+                <md-button  ng-hide="uploadBtn" ng-click="Upload('upload')" style="margin-right:10px;background-color: #337ab7;border-radius: 4px;color:white">
                     UPLOAD
                 </md-button>
                 <md-button class="btn btn-warning" style="background-color: #f0ad4e;border-radius: 4px;color:white" ng-click="Cancel('cancel')">
